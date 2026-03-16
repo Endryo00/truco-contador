@@ -14,6 +14,15 @@ export default function App() {
     setNumero(numero - 1)
   }
 
+  const [numero2, setNumero2] = useState(0)
+
+  const aumentarNumero2 = () => {
+    setNumero2(numero2 + 1)
+  }
+  const diminuirNumero2 = () => {
+    setNumero2(numero2 - 1)
+  }
+
 
   return (
     <View style={styles.container}>
@@ -29,10 +38,18 @@ export default function App() {
       /> 
       
       <Text style={styles.textoUm}>Contador Truco </Text>
+      <Text> NOIS </Text>
       <Text>{numero}</Text>
       <View style={styles.containerBotoes}>
         <Button title="+" color={"#33ff00"} onPress={aumentarNumero} />
         <Button title="-" color={"#ff0000"} onPress={diminuirNumero} />
+      </View>
+
+      <Text> ELES </Text>
+      <Text>{numero2}</Text>
+      <View style={styles.containerBotoes}>
+        <Button title="+" color={"#33ff00"} onPress={aumentarNumero2} />
+        <Button title="-" color={"#ff0000"} onPress={diminuirNumero2} />
       </View>
       <StatusBar style="auto" />  
       
@@ -55,8 +72,8 @@ const styles = StyleSheet.create({
   },
   containerBotoes: {
     flexDirection: 'row',
-    justifyContent: 'space-between', // Cria um espaço entre eles
-    marginTop: 20, // Distância entre o número e os botões
-    width: '20%', // Define uma largura para o grupo de botões não ficar grudado
+    justifyContent: 'space-between',
+    marginTop: 20,
+    width: '20%',
   },
 });
