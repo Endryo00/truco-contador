@@ -23,19 +23,21 @@ export default function App() {
     setNumero2(numero2 - 1)
   }
 
+  const somarNois = (valor) => {
+  setNumero(numero + valor);
+};
+
+const somarEles = (valor) => {
+  setNumero2(numero2 + valor);
+};
+
+
 
   return (
     <View style={styles.container}>
       
       <Image source={require('./assets/logounipar.png')} 
-        style={{
-          width: 400,   
-          height: 200,    
-          resizeMode: 'contain', 
-          position: 'absolute', 
-          top: 50,
-        }}
-      /> 
+        style={styles.logo}/> 
       
       <Text style={styles.textoUm}>Contador Truco </Text>
       <Text> NOIS </Text>
@@ -45,12 +47,30 @@ export default function App() {
         <Button title="-" color={"#ff0000"} onPress={diminuirNumero} />
       </View>
 
+      <View style={styles.containerTruco}>
+        <Button title="Truco" color="#222" onPress={() => somarNois(3)} />
+        <Button title="6" color="#222" onPress={() => somarNois(6)} />
+        <Button title="9" color="#222" onPress={() => somarNois(9)} />
+        <Button title="12" color="#222" onPress={() => somarNois(12)} />
+      </View>
+
+      <View style={styles.divisor} />
+
       <Text> ELES </Text>
       <Text>{numero2}</Text>
       <View style={styles.containerBotoes}>
         <Button title="+" color={"#33ff00"} onPress={aumentarNumero2} />
         <Button title="-" color={"#ff0000"} onPress={diminuirNumero2} />
       </View>
+
+
+      <View style={styles.containerTruco}>
+        <Button title="Truco" color="#222" onPress={() => somarEles(3)} />
+        <Button title="6" color="#222" onPress={() => somarEles(6)} />
+        <Button title="9" color="#222" onPress={() => somarEles(9)} />
+        <Button title="12" color="#222" onPress={() => somarEles(12)} />
+      </View>
+
       <StatusBar style="auto" />  
       
 
@@ -63,12 +83,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#ffffff",
+    marginTop: 220,
     alignItems: "center",
     justifyContent: "center",
   },
+  logo: {
+    width:300,
+    height:200,
+    resizeMode: 'contain',
+    marginTop: -200,
+  },
   textoUm:{
     fontSize:35,
-    marginTop:-200
+    paddingTop:'5%'
   },
   containerBotoes: {
     flexDirection: 'row',
@@ -76,4 +103,16 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: '20%',
   },
+  containerTruco: {
+    flexDirection: 'collum',
+    justifyContent: 'space-between',
+    width: '20%',
+    marginBottom: 20,
+  },
+  divisor: {
+    height: 1,
+    backgroundColor: '#ccc',
+    width: '80%',
+    marginVertical: 15,
+  }
 });
