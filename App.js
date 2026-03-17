@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
-import { useState } from 'react'
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { Button, StyleSheet, Text, View } from "react-native";
 import { Image } from "react-native"
 
@@ -31,6 +32,25 @@ const somarEles = (valor) => {
   setNumero2(numero2 + valor);
 };
 
+ const [vitoriaNois, setVitoriaNois] = useState(0)
+ const [vitoriaEles, setVitoriaEles] = useState(0)
+
+
+useEffect(() => {
+  if (numero >= 12) {
+    setVitoriaNois(vitoriaNois + 1);
+    setNumero(0);
+    setNumero2(0);
+  }
+}, [numero]);
+
+useEffect(() => {
+  if (numero2 >= 12) {
+    setVitoriaEles(vitoriaEles + 1);
+    setNumero(0);
+    setNumero2(0);
+  }
+}, [numero2]);
 
 
   return (
@@ -42,6 +62,7 @@ const somarEles = (valor) => {
       <Text style={styles.textoUm}>Contador Truco </Text>
       <Text> NOIS </Text>
       <Text>{numero}</Text>
+      <Text>Vitórias: {vitoriaNois}</Text>
       <View style={styles.containerBotoes}>
         <Button title="+" color={"#33ff00"} onPress={aumentarNumero} />
         <Button title="-" color={"#ff0000"} onPress={diminuirNumero} />
@@ -58,6 +79,7 @@ const somarEles = (valor) => {
 
       <Text> ELES </Text>
       <Text>{numero2}</Text>
+      <Text>Vitórias: {vitoriaEles}</Text>
       <View style={styles.containerBotoes}>
         <Button title="+" color={"#33ff00"} onPress={aumentarNumero2} />
         <Button title="-" color={"#ff0000"} onPress={diminuirNumero2} />
