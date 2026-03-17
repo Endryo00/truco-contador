@@ -5,6 +5,13 @@ import { Button, StyleSheet, Text, View } from "react-native";
 import { Image } from "react-native"
 
 export default function App() {
+
+  const REINICIAR = () => {
+  setNumero(0);
+  setNumero2(0);
+  setVitoriaNois(0);
+  setVitoriaEles(0);
+};
   
   const [numero, setNumero] = useState(0)
 
@@ -52,12 +59,13 @@ useEffect(() => {
   }
 }, [numero2]);
 
-
   return (
     <View style={styles.container}>
       
       <Image source={require('./assets/logounipar.png')} 
         style={styles.logo}/> 
+
+        <Button title="Reiniciar Partida" color="#ff0000" onPress={REINICIAR} />
       
       <Text style={styles.textoUm}>Contador Truco </Text>
       <Text> NOIS </Text>
@@ -93,6 +101,7 @@ useEffect(() => {
         <Button title="12" color="#222" onPress={() => somarEles(12)} />
       </View>
 
+
       <StatusBar style="auto" />  
       
 
@@ -113,7 +122,7 @@ const styles = StyleSheet.create({
     width:300,
     height:200,
     resizeMode: 'contain',
-    marginTop: -200,
+    marginTop: -240,
   },
   textoUm:{
     fontSize:35,
@@ -135,6 +144,6 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: '#ccc',
     width: '80%',
-    marginVertical: 15,
+    marginVertical: 3,
   }
 });
